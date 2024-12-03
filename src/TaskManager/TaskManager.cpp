@@ -15,9 +15,7 @@ void TaskManager::addTask(const std::string& description) {
     newTask.status = "todo"; 
     newTask.createdAt = getCurrentTimestamp();
     newTask.updatedAt = newTask.createdAt;
-
     tasks.push_back(newTask);
-
     std::cout << "Task added successfully (ID: " << newTask.id << ")" << std::endl;
 }
 
@@ -25,10 +23,22 @@ void TaskManager::deleteTask(const int& id) {
     auto it = std::find_if(tasks.begin(), tasks.end(), [id](const Task& task) {
         return task.id == id; 
     });
-
     if (it != tasks.end()) {
         tasks.erase(it);
         std::cout << "Task with ID " << id << " has been deleted." << std::endl;
+    } else {
+        std::cout << "Task with ID " << id << " not found." << std::endl;
+    }
+}
+
+void TaskManager::updateTask(const int& id, const std::string& newDescription) {
+    auto it = std::find_if(tasks.begin(), tasks.end(), [id](const Task& task) {
+        return task.id == id; 
+    });
+    if (it != tasks.end()) {
+        it->description = newDescription;
+        it->updatedAt = getCurrentTimestamp();
+        std::cout << "Task with ID " << id << " has been updated." << std::endl;
     } else {
         std::cout << "Task with ID " << id << " not found." << std::endl;
     }
