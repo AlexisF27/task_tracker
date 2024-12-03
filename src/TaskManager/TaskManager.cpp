@@ -68,23 +68,27 @@ void TaskManager::markInDone(const int& id) {
 }
 
 void TaskManager::listTasks(const std::string& filter) const {
-    if (tasks.empty()) {
-        std::cout << "No tasks to display." << std::endl;
-        return;
-    }
-
-    // Filter and display tasks
-    std::cout << "Tasks" << (filter.empty() ? "" : " (" + filter + ")") << ":" << std::endl;
-
-    for (const auto& task : tasks) {
-        // Display task if the filter matches, or if no filter is provided
-        if (filter.empty() || task.status == filter) {
-            std::cout << "ID: " << task.id 
-                      << ", Description: " << task.description 
-                      << ", Status: " << task.status 
-                      << ", Created At: " << task.createdAt 
-                      << ", Updated At: " << task.updatedAt 
+    if (filter.empty()) {
+        std::cout << "All Tasks:" << std::endl;
+        for (const auto& task : tasks) {
+            std::cout << "ID: " << task.id
+                      << ", Description: " << task.description
+                      << ", Status: " << task.status
+                      << ", Created At: " << task.createdAt
+                      << ", Updated At: " << task.updatedAt
                       << std::endl;
+        }
+    } else {
+        std::cout << "Tasks (" << filter << "):" << std::endl;
+        for (const auto& task : tasks) {
+            if (task.status == filter) {
+                std::cout << "ID: " << task.id
+                          << ", Description: " << task.description
+                          << ", Status: " << task.status
+                          << ", Created At: " << task.createdAt
+                          << ", Updated At: " << task.updatedAt
+                          << std::endl;
+            }
         }
     }
 }

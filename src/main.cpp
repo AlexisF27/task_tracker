@@ -55,10 +55,8 @@ int main(int argc, char* argv[]) {
 
     } else if (command == "list") {
         if (argc == 2) {
-            // List all tasks
             taskManager.listTasks();
         } else {
-            // Filter tasks by status
             std::string filter = argv[2];
             taskManager.listTasks(filter);
         }
