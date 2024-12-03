@@ -113,6 +113,6 @@ Once the application is running, you can use the following commands to interact 
    ```bash
    ./task_tracker list "in-progress"
 
-Delete the task with ID 1:
+- Delete the task with ID 1:
    ```bash
    ./task_tracker delete 1
