@@ -2,10 +2,10 @@
 #include <ctime> // For timestamp generation
 #include <iostream>
 #include <algorithm>
+#include <fstream>
 
 TaskManager::TaskManager() : nextId(1) {
-    // In this simplified version, we'll assume tasks start empty.
-    // Normally, you might load tasks from a file here.
+    loadTasks();
 }
 
 void TaskManager::addTask(const std::string& description) {
@@ -97,4 +97,54 @@ std::string TaskManager::getCurrentTimestamp() const {
     char buffer[20];
     std::strftime(buffer, sizeof(buffer), "%Y-%m-%d %H:%M:%S", std::localtime(&now));
     return std::string(buffer);
+}
+
+void TaskManager::loadTasks() {
+    std::ifstream file("tasks.json");
+    if (file.is_open()) {
+        nlohmann::json jsonData;
+        file >> jsonData;
+        file.close();
+
+        // Load tasks from the JSON data
+        for (const auto& taskData : jsonData) {
+            Task task;
+            task.id = taskData["id"];
+            task.description = taskData["description"];
+            task.status = taskData["status"];
+            task.createdAt = taskData["createdAt"];
+            task.updatedAt = taskData["updatedAt"];
+            tasks.push_back(task);
+
+            // Update nextId to be the next available ID
+            if (task.id >= nextId) {
+                nextId = task.id + 1;
+            }
+        }
+    } else {
+        // If the file doesn't exist, create a new file with an empty JSON array
+        std::ofstream newFile("tasks.json");
+        newFile << "[]";  // Initialize with an empty JSON array
+        newFile.close();
+    }
+}
+
+// Save tasks to tasks.json
+void TaskManager::saveTasks() {
+    nlohmann::json jsonData;
+
+    for (const auto& task : tasks) {
+        jsonData.push_back({
+            {"id", task.id},
+            {"description", task.description},
+            {"status", task.status},
+            {"createdAt", task.createdAt},
+            {"updatedAt", task.updatedAt}
+        });
+    }
+
+    // Write the JSON data to tasks.json with indentation
+    std::ofstream file("tasks.json");
+    file << jsonData.dump(4);  // Dump JSON with 4 spaces of indentation
+    file.close();
 }

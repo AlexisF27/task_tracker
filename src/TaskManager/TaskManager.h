@@ -3,20 +3,22 @@
 
 #include <string>
 #include <vector>
+#include "json.hpp" 
 
 
 struct Task {
-    int id;                 // Unique identifier
-    std::string description; // Task description
-    std::string status;      // Status: "todo" by default
-    std::string createdAt;   // Creation timestamp
-    std::string updatedAt;   // Last updated timestamp
+    int id;                
+    std::string description; 
+    std::string status;      
+    std::string createdAt;   
+    std::string updatedAt;  
+    std::string jsonFilePath;
+
+
 };
 class TaskManager {
 public:
-    TaskManager(); // Constructor
-
-    // Task operations
+    TaskManager(); 
     void addTask(const std::string& description);
     void deleteTask(const int& id);
     void updateTask(const int& id, const std::string& newDescription);
@@ -24,13 +26,15 @@ public:
     void updateTaskStatus(const int& id, const std::string& newStatus);
     void markInDone(const int& id);
     void markInProgress(const int& id);
+    TaskManager(const std::string& filePath = "tasks.json");
 
 private:
-    std::vector<Task> tasks; // In-memory list of tasks
-    int nextId;              // To generate unique IDs for tasks
-
-    // Helper functions
-    std::string getCurrentTimestamp() const; // Generate current timestamp
+    std::vector<Task> tasks; 
+    int nextId;              
+    std::string getCurrentTimestamp() const; 
+    void loadFromFile();  
+    void saveToFile() const;
+    
 };
 
-#endif // TASKMANAGER_H
+#endif 
