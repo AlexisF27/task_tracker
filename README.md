@@ -34,15 +34,7 @@ The nlohmann/json library is used to handle JSON data in the project. Follow the
 
 This command downloads the json.hpp file inside your root project. Ensure that your project's include directory is correctly set up for the compiler to find the file.
   
-   ```bash
-     project-root/
-   ├── include/
-   │    └── json.hpp
-   ├── src/
-   ├── build/
-   └── CMakeLists.txt
 
-few
 
 
 ### Building the Project
