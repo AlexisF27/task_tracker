@@ -63,25 +63,25 @@ Once the application is running, you can use the following commands to interact 
 
 ### Commands
 
-   - Add a task:
+- Add a task:
    ```bash
    ./task_tracker add "Task description"
 
 - Update a task:
-```bash
-./task_tracker update <Task ID> "New task description"
+   ```bash
+   ./task_tracker update <Task ID> "New task description"
 
 - Delete a task:
-```bash
-./task_tracker delete <Task ID>
+   ```bash
+   ./task_tracker delete <Task ID>
 
 - Mark a task as in-progress:
-```bash
-./task_tracker mark-in-progress <Task ID>
+   ```bash
+   ./task_tracker mark-in-progress <Task ID>
 
 - Mark a task as done:
-```bash
-./task_tracker mark-done <Task ID>
+   ```bash
+   ./task_tracker mark-done <Task ID>
 
 - List all tasks:
 ```bash
