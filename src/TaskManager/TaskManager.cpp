@@ -67,13 +67,27 @@ void TaskManager::markInDone(const int& id) {
     updateTaskStatus(id, "done");
 }
 
-void TaskManager::listTasks() const {
-    std::cout << "Tasks:" << std::endl;
+void TaskManager::listTasks(const std::string& filter) const {
+    if (tasks.empty()) {
+        std::cout << "No tasks to display." << std::endl;
+        return;
+    }
+
+    // Filter and display tasks
+    std::cout << "Tasks" << (filter.empty() ? "" : " (" + filter + ")") << ":" << std::endl;
+
     for (const auto& task : tasks) {
-        std::cout << "ID: " << task.id << ", Description: " << task.description << ", Status: " << task.status << ", Created At: " << task.createdAt << ", Updated At: " << task.updatedAt << std::endl;
+        // Display task if the filter matches, or if no filter is provided
+        if (filter.empty() || task.status == filter) {
+            std::cout << "ID: " << task.id 
+                      << ", Description: " << task.description 
+                      << ", Status: " << task.status 
+                      << ", Created At: " << task.createdAt 
+                      << ", Updated At: " << task.updatedAt 
+                      << std::endl;
+        }
     }
 }
-
 std::string TaskManager::getCurrentTimestamp() const {
     std::time_t now = std::time(nullptr);
     char buffer[20];
