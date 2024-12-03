@@ -41,7 +41,7 @@ This command downloads the json.hpp file inside your root project. Ensure that y
 1. **Clone the repository**:
    
    ```bash
-   git clone https://github.com/your-username/task-tracker.git
+   git clone https://github.com/AlexisF27/task-tracker.git
    cd task-tracker
 
 2. **Create a build directory**:
