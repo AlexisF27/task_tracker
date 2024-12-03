@@ -29,13 +29,13 @@ A simple C++ task tracker application that allows you to manage your tasks throu
 2. **Set up the nlohmann/json library:**:
 The nlohmann/json library is used to handle JSON data in the project. Follow these steps to manually include the library:
 - Download the json.hpp file from the official GitHub repository:
-  ```bash
-  wget https://raw.githubusercontent.com/nlohmann/json/develop/single_include/nlohmann/json.hpp -P include/nlohmann/
+     ```bash
+     wget https://raw.githubusercontent.com/nlohmann/json/develop/single_include/nlohmann/json.hpp -P include/nlohmann/
 
 This command downloads the json.hpp file inside your root project. Ensure that your project's include directory is correctly set up for the compiler to find the file.
   
 
-
+3. fs
 
 ### Building the Project
 
