@@ -20,7 +20,6 @@ A simple C++ task tracker application that allows you to manage your tasks throu
 ### Installing Dependencies
 
 ### PROJECT URL
-   ```bash
    https://roadmap.sh/projects/task-tracker
 
 1. **Install C++ tools**:
