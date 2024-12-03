@@ -84,41 +84,38 @@ Once the application is running, you can use the following commands to interact 
    ./task_tracker mark-done <Task ID>
 
 - List all tasks:
-```bash
-./task_tracker list
+   ```bash
+   ./task_tracker list
 
 - List tasks with a specific filter (e.g., by status):
-Where <status> can be "in-progress", "done", etc.
-```bash
-./task_tracker list <status>
+   Where <status> can be "in-progress", "done", etc.
+   ```bash
+   ./task_tracker list <status>
 
 
+### Examples
+- Add a task:
+   ```bash
+   ./task_tracker add "Complete homework"
 
-Examples
-Add a task:
+- List all tasks:
+    ```bash
+    ./task_tracker list
+    
+- Update the task with ID 1:
+   ```bash
+   ./task_tracker update 1 "Complete math homework"
+- Mark the task with ID 1 as done:
+   ```bash
+   ./task_tracker mark-done 1
 
-bash
-./task_tracker add "Complete homework"
-List all tasks:
+- List tasks with a specific status (e.g., "in-progress"):
+   ```bash
+   ./task_tracker list "in-progress"
 
-bash
-./task_tracker list
-Update the task with ID 1:
-
-bash
-./task_tracker update 1 "Complete math homework"
-Mark the task with ID 1 as done:
-
-bash
-./task_tracker mark-done 1
-List tasks with a specific status (e.g., "in-progress"):
-
-bash
-./task_tracker list "in-progress"
 Delete the task with ID 1:
-
-bash
-./task_tracker delete 1
+   ```bash
+   ./task_tracker delete 1
 
 
 
