@@ -1,7 +1,11 @@
-#include <iostream>
+#include "TaskManager/TaskManager.h"
 
 int main() {
-    std::cout << "Hello, Task Tracker!" << std::endl;
-    std::cout << "C++ environment is set up correctly!" << std::endl;
+    TaskManager taskManager;
+
+    // Add tasks
+    taskManager.addTask("Buy groceries");
+    taskManager.addTask("Complete project documentation");
+
     return 0;
 }

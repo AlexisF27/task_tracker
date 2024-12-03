@@ -7,4 +7,7 @@ project(TaskTracker)
 set(CMAKE_CXX_STANDARD 17)
 
 # Add the executable
-add_executable(task-tracker src/main.cpp)
+add_executable(task_tracker 
+    src/main.cpp
+    src/TaskManager/TaskManager.cpp
+)
