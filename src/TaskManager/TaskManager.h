@@ -19,6 +19,7 @@ public:
     // Task operations
     void addTask(const std::string& description);
     void deleteTask(const int& id);
+    void updateTask(const int& id, const std::string& newDescription);
 
 private:
     std::vector<Task> tasks; // In-memory list of tasks
