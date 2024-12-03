@@ -45,27 +45,27 @@ This command downloads the json.hpp file inside your root project. Ensure that y
    cd task-tracker
 
 2. **Create a build directory**:
-```bash
-mkdir build
-cd build
+   ```bash
+   mkdir build
+   cd build
 
 3. **Create a build directory**:
-```bash
-cmake ..
-make
+   ```bash
+   cmake ..
+   make
 4. **Run the application**: 
-After building the project, the task_tracker executable will be available in the build directory:
-```bash
-./task_tracker
+   After building the project, the task_tracker executable will be available in the build directory:
+   ```bash
+   ./task_tracker
 
 ### Usage
 Once the application is running, you can use the following commands to interact with the task manager.
 
 ### Commands
 
-- Add a task:
-```bash
-./task_tracker add "Task description"
+   - Add a task:
+   ```bash
+   ./task_tracker add "Task description"
 
 - Update a task:
 ```bash
