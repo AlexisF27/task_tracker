@@ -44,6 +44,36 @@ void TaskManager::updateTask(const int& id, const std::string& newDescription) {
     }
 }
 
+void TaskManager::updateTaskStatus(const int& id, const std::string& newStatus) {
+    auto it = std::find_if(tasks.begin(), tasks.end(), [id](const Task& task) {
+        return task.id == id; 
+    });
+
+    if (it != tasks.end()) {
+        it->status = newStatus;
+        it->updatedAt = getCurrentTimestamp();
+        std::cout << "Task with ID " << id << " has been updated to status '" << newStatus << "'." << std::endl;
+    } else {
+        std::cout << "Task with ID " << id << " not found." << std::endl;
+    }
+}
+
+
+void TaskManager::markInProgress(const int& id) {
+    updateTaskStatus(id, "in_progress");
+}
+
+void TaskManager::markInDone(const int& id) {
+    updateTaskStatus(id, "done");
+}
+
+void TaskManager::listTasks() const {
+    std::cout << "Tasks:" << std::endl;
+    for (const auto& task : tasks) {
+        std::cout << "ID: " << task.id << ", Description: " << task.description << ", Status: " << task.status << ", Created At: " << task.createdAt << ", Updated At: " << task.updatedAt << std::endl;
+    }
+}
+
 std::string TaskManager::getCurrentTimestamp() const {
     std::time_t now = std::time(nullptr);
     char buffer[20];
