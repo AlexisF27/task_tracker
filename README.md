@@ -35,14 +35,14 @@ The nlohmann/json library is used to handle JSON data in the project. Follow the
 This command downloads the json.hpp file inside your root project. Ensure that your project's include directory is correctly set up for the compiler to find the file.
   
 
-3. fs
 
 ### Building the Project
 
 1. **Clone the repository**:
-```bash
-git clone https://github.com/your-username/task-tracker.git
-cd task-tracker
+   
+   ```bash
+   git clone https://github.com/your-username/task-tracker.git
+   cd task-tracker
 
 2. **Create a build directory**:
 ```bash
