@@ -31,3 +31,11 @@ The nlohmann/json library is used to handle JSON data in the project. Follow the
 - Download the json.hpp file from the official GitHub repository:
   ```bash
   wget https://raw.githubusercontent.com/nlohmann/json/develop/single_include/nlohmann/json.hpp -P include/nlohmann/
+```bash
+  project-root/
+├── include/
+│   └── nlohmann/
+│       └── json.hpp
+├── src/
+├── build/
+└── CMakeLists.txt
