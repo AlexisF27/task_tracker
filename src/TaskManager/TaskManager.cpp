@@ -4,9 +4,16 @@
 #include <algorithm>
 #include <fstream>
 
-TaskManager::TaskManager() : nextId(1) {
-    loadTasks();
+TaskManager::TaskManager(const std::string& filePath) : nextId(1) {
+    // Call loadTasks with the file path provided by the user
+    loadTasks(filePath);
 }
+
+TaskManager::~TaskManager() {
+    // Optionally save tasks before the object is destroyed
+    saveTasks("tasks.json");
+}
+
 
 void TaskManager::addTask(const std::string& description) {
     Task newTask;
@@ -99,14 +106,13 @@ std::string TaskManager::getCurrentTimestamp() const {
     return std::string(buffer);
 }
 
-void TaskManager::loadTasks() {
-    std::ifstream file("tasks.json");
+void TaskManager::loadTasks(const std::string& filePath) {
+    std::ifstream file(filePath);
     if (file.is_open()) {
         nlohmann::json jsonData;
         file >> jsonData;
         file.close();
 
-        // Load tasks from the JSON data
         for (const auto& taskData : jsonData) {
             Task task;
             task.id = taskData["id"];
@@ -116,21 +122,18 @@ void TaskManager::loadTasks() {
             task.updatedAt = taskData["updatedAt"];
             tasks.push_back(task);
 
-            // Update nextId to be the next available ID
             if (task.id >= nextId) {
                 nextId = task.id + 1;
             }
         }
     } else {
-        // If the file doesn't exist, create a new file with an empty JSON array
-        std::ofstream newFile("tasks.json");
-        newFile << "[]";  // Initialize with an empty JSON array
+        std::ofstream newFile(filePath);
+        newFile << "[]"; 
         newFile.close();
     }
 }
 
-// Save tasks to tasks.json
-void TaskManager::saveTasks() {
+void TaskManager::saveTasks(const std::string& filePath) {
     nlohmann::json jsonData;
 
     for (const auto& task : tasks) {
@@ -143,8 +146,7 @@ void TaskManager::saveTasks() {
         });
     }
 
-    // Write the JSON data to tasks.json with indentation
-    std::ofstream file("tasks.json");
-    file << jsonData.dump(4);  // Dump JSON with 4 spaces of indentation
+    std::ofstream file(filePath);
+    file << jsonData.dump(4);  
     file.close();
 }

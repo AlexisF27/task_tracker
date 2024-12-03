@@ -3,7 +3,7 @@
 #include "TaskManager/TaskManager.h"
 
 int main(int argc, char* argv[]) {
-    TaskManager taskManager;
+    TaskManager taskManager("tasks.json");  
 
     if (argc < 2) {
         std::cerr << "Error: No command provided. Available commands are: add, update, delete, mark-in-progress, mark-done, list." << std::endl;

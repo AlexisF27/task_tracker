@@ -3,7 +3,7 @@
 
 #include <string>
 #include <vector>
-#include "json.hpp" 
+#include "../../include/json.hpp"
 
 
 struct Task {
@@ -18,7 +18,8 @@ struct Task {
 };
 class TaskManager {
 public:
-    TaskManager(); 
+    TaskManager(const std::string& filePath = "tasks.json");
+    ~TaskManager();
     void addTask(const std::string& description);
     void deleteTask(const int& id);
     void updateTask(const int& id, const std::string& newDescription);
@@ -26,15 +27,15 @@ public:
     void updateTaskStatus(const int& id, const std::string& newStatus);
     void markInDone(const int& id);
     void markInProgress(const int& id);
-    TaskManager(const std::string& filePath = "tasks.json");
 
 private:
     std::vector<Task> tasks; 
     int nextId;              
     std::string getCurrentTimestamp() const; 
-    void loadFromFile();  
-    void saveToFile() const;
-    
+    void loadTasks(const std::string& filePath);
+    void saveTasks(const std::string& filePath);
+
+
 };
 
 #endif 
