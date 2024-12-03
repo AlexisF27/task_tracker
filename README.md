@@ -116,6 +116,3 @@ Once the application is running, you can use the following commands to interact 
 Delete the task with ID 1:
    ```bash
    ./task_tracker delete 1
-
-
-
