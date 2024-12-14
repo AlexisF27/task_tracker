@@ -14,7 +14,6 @@ struct Task {
     std::string updatedAt;  
     std::string jsonFilePath;
 
-
 };
 class TaskManager {
 public:
